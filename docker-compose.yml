@@ -20,7 +20,7 @@ services:
     volumes:
       - ./server/:/app/
 
-  runautotests:
+  autotests:
     build:
       dockerfile: deploy/server/Dockerfile
       context: .
