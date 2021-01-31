@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+  runserver:
+    build:
+      dockerfile: deploy/server/Dockerfile
+      context: .
+    networks:
+      - test_task_network
+    volumes:
+      - ./server/:/app/
+    command: python main.py
+
+  runclient:
+    build:
+      dockerfile: deploy/client/Dockerfile
+      context: .
+    networks:
+      - test_task_network
+    volumes:
+      - ./server/:/app/
+
+  runautotests:
+    build:
+      dockerfile: deploy/server/Dockerfile
+      context: .
+    volumes:
+      - ./server/:/app/
+    command: python -m unittest discover
+
+networks:
+  test_task_network:
+    driver: bridge

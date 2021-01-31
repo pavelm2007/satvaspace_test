@@ -1,0 +1,5 @@
+Twisted==20.3.0
+autobahn==20.12.3
+websocket==0.2.1
+websocket-client==0.57.0
+pep8==1.7.1
